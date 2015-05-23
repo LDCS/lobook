@@ -1,0 +1,431 @@
+<!DOCTYPE HTML>
+<html lang="en" >
+    
+    <head>
+        
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=11; IE=10; IE=9; IE=8; IE=7; IE=EDGE" />
+        <title>Red squiggly underline bug | Libreoffice Blog</title>
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 2.0.2">
+        
+        
+        <meta name="HandheldFriendly" content="true"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+        <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+        
+    
+    
+    <link rel="next" href="../calcarch/index.html" />
+    
+    
+    <link rel="prev" href="../patches/index.html" />
+    
+
+        
+    </head>
+    <body>
+        
+        
+    <link rel="stylesheet" href="../gitbook/style.css">
+    
+    
+
+        
+    <div class="book" data-level="1.1" data-basepath=".." data-revision="Fri May 22 2015 22:13:31 GMT+0530 (IST)">
+    
+
+<div class="book-summary">
+    <div class="book-search">
+        <input type="text" placeholder="Type to search" class="form-control" />
+    </div>
+    <ul class="summary">
+        
+        
+        
+        
+
+        
+
+        
+    
+        <li class="chapter " data-level="0" data-path="index.html">
+            
+                
+                    <a href="../index.html">
+                        <i class="fa fa-check"></i>
+                        
+                        Introduction
+                    </a>
+                
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1" data-path="patches/index.html">
+            
+                
+                    <a href="../patches/index.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.</b>
+                        
+                        patches
+                    </a>
+                
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter active" data-level="1.1" data-path="patches/rsu.html">
+            
+                
+                    <a href="../patches/rsu.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.1.</b>
+                        
+                        Red squiggly underline bug
+                    </a>
+                
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2" data-path="calcarch/index.html">
+            
+                
+                    <a href="../calcarch/index.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.</b>
+                        
+                        Calc architecture
+                    </a>
+                
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.1" data-path="calcarch/overview.html">
+            
+                
+                    <a href="../calcarch/overview.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.1.</b>
+                        
+                        overview
+                    </a>
+                
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2" data-path="calcarch/core.html">
+            
+                
+                    <a href="../calcarch/core.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.2.</b>
+                        
+                        core
+                    </a>
+                
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.3" data-path="calcarch/ui.html">
+            
+                
+                    <a href="../calcarch/ui.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.3.</b>
+                        
+                        ui
+                    </a>
+                
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4" data-path="calcarch/filter.html">
+            
+                
+                    <a href="../calcarch/filter.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.4.</b>
+                        
+                        filter
+                    </a>
+                
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="3" data-path="misc/index.html">
+            
+                
+                    <a href="../misc/index.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.</b>
+                        
+                        Libreoffice misc
+                    </a>
+                
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="3.1" data-path="misc/bibisect.html">
+            
+                
+                    <a href="../misc/bibisect.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.1.</b>
+                        
+                        bibisect
+                    </a>
+                
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.2" data-path="misc/mdds.html">
+            
+                
+                    <a href="../misc/mdds.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.2.</b>
+                        
+                        mdds
+                    </a>
+                
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+
+        
+        <li class="divider"></li>
+        <li>
+            <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+                Published with GitBook
+            </a>
+        </li>
+        
+    </ul>
+</div>
+
+    <div class="book-body">
+        <div class="body-inner">
+            <div class="book-header">
+    <!-- Actions Left -->
+    <a href="#" class="btn pull-left toggle-summary" aria-label="Table of Contents"><i class="fa fa-align-justify"></i></a>
+    <a href="#" class="btn pull-left toggle-search" aria-label="Search"><i class="fa fa-search"></i></a>
+    
+    <div id="font-settings-wrapper" class="dropdown pull-left">
+        <a href="#" class="btn toggle-dropdown" aria-label="Font Settings"><i class="fa fa-font"></i>
+        </a>
+        <div class="dropdown-menu font-settings">
+    <div class="dropdown-caret">
+        <span class="caret-outer"></span>
+        <span class="caret-inner"></span>
+    </div>
+
+    <div class="buttons">
+        <button type="button" id="reduce-font-size" class="button size-2">A</button>
+        <button type="button" id="enlarge-font-size" class="button size-2">A</button>
+    </div>
+
+    <div class="buttons font-family-list">
+        <button type="button" data-font="0" class="button">Serif</button>
+        <button type="button" data-font="1" class="button">Sans</button>
+    </div>
+
+    <div class="buttons color-theme-list">
+        <button type="button" id="color-theme-preview-0" class="button size-3" data-theme="0">White</button>
+        <button type="button" id="color-theme-preview-1" class="button size-3" data-theme="1">Sepia</button>
+        <button type="button" id="color-theme-preview-2" class="button size-3" data-theme="2">Night</button>
+    </div>
+</div>
+
+    </div>
+
+    <!-- Actions Right -->
+    
+    <div class="dropdown pull-right">
+        <a href="#" class="btn toggle-dropdown" aria-label="Share"><i class="fa fa-share-alt"></i>
+        </a>
+        <div class="dropdown-menu font-settings dropdown-left">
+            <div class="dropdown-caret">
+                <span class="caret-outer"></span>
+                <span class="caret-inner"></span>
+            </div>
+            <div class="buttons">
+                <button type="button" data-sharing="twitter" class="button">
+                    Share on Twitter
+                </button>
+                <button type="button" data-sharing="google-plus" class="button">
+                    Share on Google
+                </button>
+                <button type="button" data-sharing="facebook" class="button">
+                    Share on Facebook
+                </button>
+                <button type="button" data-sharing="weibo" class="button">
+                    Share on Weibo
+                </button>
+                <button type="button" data-sharing="instapaper" class="button">
+                    Share on Instapaper
+                </button>
+            </div>
+        </div>
+    </div>
+    
+
+    
+    <a href="#" target="_blank" class="btn pull-right google-plus-sharing-link sharing-link" data-sharing="google-plus" aria-label="Google"><i class="fa fa-google-plus"></i></a>
+    
+    
+    <a href="#" target="_blank" class="btn pull-right facebook-sharing-link sharing-link" data-sharing="facebook" aria-label="Facebook"><i class="fa fa-facebook"></i></a>
+    
+    
+    <a href="#" target="_blank" class="btn pull-right twitter-sharing-link sharing-link" data-sharing="twitter" aria-label="Twitter"><i class="fa fa-twitter"></i></a>
+    
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="../" >Libreoffice Blog</a>
+    </h1>
+</div>
+
+            <div class="page-wrapper" tabindex="-1">
+                <div class="page-inner">
+                
+                
+                    <section class="normal" id="section-">
+                    
+                        <h1 id="missing-red-squiggly-underline-bug">Missing Red Squiggly underline bug</h1>
+<p>This post is about how the <a href="https://bugs.documentfoundation.org/show_bug.cgi?id=84240" target="_blank">red squiggly underline bug</a> was resolved. </p>
+<p>If you do a string search for <em>&#x201C;spelling&#x201D;</em> in opengrok, you will come across the variable <strong>bDoAutoSpell</strong>. This boolean variable is a private memberof the class ScDocOptions. In order to access this variable, IsAutoSpell() can be used. To set this boolean variable, SetAutoSpell(bool bval) can be used.</p>
+<p>Search for <em>&#x201C;IsAutoSpell&#x201D;</em>, and go to <a href="http://opengrok.libreoffice.org/xref/core/sc/source/ui/app/scmod.cxx#1910" target="_blank">this</a> usage. </p>
+<p>Consider this line</p>
+<pre><code>bool bSpell = pViewSh-&gt;ContinueOnlineSpelling()(pViewSh is of type ScTabViewShell*)
+</code></pre><p>Search for the usages of ContinueOnlineSpelling(). This function is a public member of class ScGridWindow. This function uses a variable mpSpellCheckCxt of type</p>
+<p><code>std::unique_ptr</code></p>
+<p>SpellCheckContext also contains the structure variable <code>CellPos maPos</code>, which can be used in the following manner.</p>
+<pre><code>maPos-&gt;mnCol
+
+maPos-&gt;mnRow
+</code></pre><p>to get the column and row coordinates for spellcheck. ScGridWindow has other functions such as ResetAutoSpell(), EnableAutoSpell(), SetAutoSpell(), HandleMouseButtonDown() etc.</p>
+<p>SetAutoSpell() function:</p>
+<p><code>void ScGridWindow::SetAutoSpellData( SCCOL nPosX, SCROW nPosY, const std::vector * pRanges )</code></p>
+<p>this function takes as input nPosX and nPosY (which are of type SCCOL and SCROW respectively) to set the mis-spelling ranges as</p>
+<p><code>mpSpellCheckCxt-&gt;setMisspellRanges(nPosX, nPosY, pRanges);</code></p>
+<p>mpSpellCheckCxt can be used to access functions such as isMisSpelled(), getMisspellRanges, setMisspellRanges, reset() etc.</p>
+<p><a href="http://opengrok.libreoffice.org/xref/core/sc/source/ui/view/spellcheckcontext.cxx" target="_blank">http://opengrok.libreoffice.org/xref/core/sc/source/ui/view/spellcheckcontext.cxx</a></p>
+<p>Using <strong>gdb</strong> it can be verified that MouseButtonUp() is called when the drag and copy is done in calc. Further, using the gdb it was found that the else part</p>
+<p><code>pViewData-&gt;GetDispatcher().Execute( FID_FILL_AUTO, SfxCallMode::SLOT| SfxCallMode::RECORD )</code>
+was executed.
+pRanges contains the mis-spelling ranges that needs the red squiggly line for a specified cell.MpSpellCheckCxt is of type
+<code>std::unique_ptr</code></p>
+<p>SpellCheckContext is a structure that contains</p>
+<pre><code>typedef std::unordered_map&lt;CellPos,
+std::vector,CellPos::Hash&gt;CellMapType;
+CellMapType maMisSpellCells;
+</code></pre><p>Each mis-spelled cell is a hash map into which the key is the cellposition(column, row) and value, a vector of MisspellRanges.</p>
+<p>The basic idea is to simply copy the already computed mis-spelling ranges to the selected area, instead of again checking the spelling on the copied area (which is the same as the area for which spell checking has already been done). There are basically 4 kinds of drag and copy: </p>
+<ul>
+<li><p>TOP_TO_BOTTOM</p>
+</li>
+<li><p>BOTTOM_TO_TOP</p>
+</li>
+<li><p>LEFT_TO_RIGHT</p>
+</li>
+<li><p>RIGHT_TO_LEFT.</p>
+</li>
+</ul>
+<p>After ScCellShell Execute() is done, the code for handling the various kinds of drag and copy can be added. But, developer Eike Rathke commented that if the code is placed inside SCGridWindow, the case of ctrl-D copy wouldn&#x2019;t be handled. Besides, this functionality is not intended to be placed inside a function such as MouseButtonUp(). So, instead this code can be placed in a file where FID_FILL_AUTO is executed.</p>
+<p>It would be useful to write a wrapper function (like SetAutoSpellData()) called GetAutoSpellData() in ScGridWindow. This function will in turn call the function getMisspellingRanges()that will set the mis-spelling ranges given positions x and y.</p>
+<p>If you search for FID_FILL_AUTO in opengrok you will come across <a href="http://opengrok.libreoffice.org/xref/core/sc/source/ui/view/cellsh1.cxx#791" target="_blank">this</a></p>
+<p>and further down there&#x2019;s a line <code>pTabViewShell-&gt;FillAuto( eDir, nStartCol, nStartRow, nEndCol, nEndRow, nCount )</code></p>
+<p>FillAuto() function is a member of ScViewFunc.FillSimple() is another member of ScViewFunc.</p>
+<p>There are two types of copy methods, </p>
+<ol>
+<li><p>Selecting the source data and extending range and pressing ctrl-D. </p>
+</li>
+<li><p>Selecting the source data and range extending by clicking the cross hair of the cell.</p>
+</li>
+</ol>
+<p>Following is the spreadsheet data before performing both type of copies.</p>
+<p><img src="before.png" alt="image"></p>
+<p><em>1.</em> FillSimple() copies only the first row of the entire block.</p>
+<p><img src="FillSimple.png" alt="image"></p>
+<p><em>2.</em> FillAuto() copies the entire block.</p>
+<p><img src="FillAutor.png" alt="image"></p>
+<p>The code for performing the copy of the settings for the mis-spelling ranges can be placed in ScViewFunc. To see the code that was added go to
+<a href="https://gerrit.libreoffice.org/#/c/14872/" target="_blank">https://gerrit.libreoffice.org/#/c/14872/</a></p>
+
+                    
+                    </section>
+                
+                
+                </div>
+            </div>
+        </div>
+
+        
+        <a href="../patches/index.html" class="navigation navigation-prev " aria-label="Previous page: patches"><i class="fa fa-angle-left"></i></a>
+        
+        
+        <a href="../calcarch/index.html" class="navigation navigation-next " aria-label="Next page: Calc architecture"><i class="fa fa-angle-right"></i></a>
+        
+    </div>
+</div>
+
+        
+<script src="../gitbook/app.js"></script>
+
+<script>
+require(["gitbook"], function(gitbook) {
+    var config = {"fontSettings":{"theme":null,"family":"sans","size":2}};
+    gitbook.start(config);
+});
+</script>
+
+        
+    </body>
+    
+</html>
