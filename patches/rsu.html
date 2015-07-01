@@ -5,7 +5,7 @@
         
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=11; IE=10; IE=9; IE=8; IE=7; IE=EDGE" />
-        <title>Red squiggly underline bug | Libreoffice Development Book</title>
+        <title>Red squiggly underline bug | Libreoffice Blog</title>
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <meta name="description" content="">
         <meta name="generator" content="GitBook 2.0.2">
@@ -36,7 +36,7 @@
     
 
         
-    <div class="book" data-level="1.1" data-basepath=".." data-revision="Sat May 23 2015 20:39:14 GMT+0530 (IST)">
+    <div class="book" data-level="1.1" data-basepath=".." data-revision="Wed Jul 01 2015 19:25:32 GMT+0530 (IST)">
     
 
 <div class="book-summary">
@@ -199,13 +199,28 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="3.1" data-path="misc/bibisect.html">
+        <li class="chapter " data-level="3.1" data-path="misc/devsetup.html">
+            
+                
+                    <a href="../misc/devsetup.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.1.</b>
+                        
+                        devsetup
+                    </a>
+                
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.2" data-path="misc/bibisect.html">
             
                 
                     <a href="../misc/bibisect.html">
                         <i class="fa fa-check"></i>
                         
-                            <b>3.1.</b>
+                            <b>3.2.</b>
                         
                         bibisect
                     </a>
@@ -214,13 +229,13 @@
             
         </li>
     
-        <li class="chapter " data-level="3.2" data-path="misc/mdds.html">
+        <li class="chapter " data-level="3.3" data-path="misc/mdds.html">
             
                 
                     <a href="../misc/mdds.html">
                         <i class="fa fa-check"></i>
                         
-                            <b>3.2.</b>
+                            <b>3.3.</b>
                         
                         mdds
                     </a>
@@ -327,7 +342,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href="../" >Libreoffice Development Book</a>
+        <a href="../" >Libreoffice Blog</a>
     </h1>
 </div>
 
@@ -338,7 +353,7 @@
                     <section class="normal" id="section-">
                     
                         <h1 id="missing-red-squiggly-underline-bug">Missing Red Squiggly underline bug</h1>
-<p>This section is about how the <a href="https://bugs.documentfoundation.org/show_bug.cgi?id=84240" target="_blank">red squiggly underline bug</a> was resolved. </p>
+<p>This post is about how the <a href="https://bugs.documentfoundation.org/show_bug.cgi?id=84240" target="_blank">red squiggly underline bug</a> was resolved. </p>
 <p>If you do a string search for <em>&#x201C;spelling&#x201D;</em> in opengrok, you will come across the variable <strong>bDoAutoSpell</strong>. This boolean variable is a private memberof the class ScDocOptions. In order to access this variable, IsAutoSpell() can be used. To set this boolean variable, SetAutoSpell(bool bval) can be used.</p>
 <p>Search for <em>&#x201C;IsAutoSpell&#x201D;</em>, and go to <a href="http://opengrok.libreoffice.org/xref/core/sc/source/ui/app/scmod.cxx#1910" target="_blank">this</a> usage. </p>
 <p>Consider this line</p>

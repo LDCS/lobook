@@ -5,7 +5,7 @@
         
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=11; IE=10; IE=9; IE=8; IE=7; IE=EDGE" />
-        <title>ui | Libreoffice Blog</title>
+        <title>devsetup | Libreoffice Blog</title>
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <meta name="description" content="">
         <meta name="generator" content="GitBook 2.0.2">
@@ -20,10 +20,10 @@
         
     
     
-    <link rel="next" href="../calcarch/filter.html" />
+    <link rel="next" href="../misc/bibisect.html" />
     
     
-    <link rel="prev" href="../calcarch/core.html" />
+    <link rel="prev" href="../misc/index.html" />
     
 
         
@@ -36,7 +36,7 @@
     
 
         
-    <div class="book" data-level="2.3" data-basepath=".." data-revision="Wed Jul 01 2015 19:25:32 GMT+0530 (IST)">
+    <div class="book" data-level="3.1" data-basepath=".." data-revision="Wed Jul 01 2015 19:25:32 GMT+0530 (IST)">
     
 
 <div class="book-summary">
@@ -148,7 +148,7 @@
             
         </li>
     
-        <li class="chapter active" data-level="2.3" data-path="calcarch/ui.html">
+        <li class="chapter " data-level="2.3" data-path="calcarch/ui.html">
             
                 
                     <a href="../calcarch/ui.html">
@@ -199,7 +199,7 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="3.1" data-path="misc/devsetup.html">
+        <li class="chapter active" data-level="3.1" data-path="misc/devsetup.html">
             
                 
                     <a href="../misc/devsetup.html">
@@ -352,7 +352,42 @@
                 
                     <section class="normal" id="section-">
                     
-                        <h1 id="ui">ui</h1>
+                        <h1 id="how-to-setup-a-libreoffice-development-system">How to setup a libreoffice development system</h1>
+<h2 id="requirements">Requirements</h2>
+<ul>
+<li>You must have at least 26 GB of disk space for getting the git repo code and building it and a few more GBs for a debug build.</li>
+<li>Need a minimum of 4 GB RAM but more than 8 GB is ideal.</li>
+</ul>
+<h3 id="reference-system-spec">Reference system spec</h3>
+<ul>
+<li>RAM - 16 GB</li>
+<li>Disk - 256 GB SDD</li>
+<li>CPU - Intel(R) Core(TM) i7-3770K CPU @ 3.50GHz</li>
+</ul>
+<h2 id="build-dependencies">Build dependencies</h2>
+<p>On Fedora 15+ &amp; derivatives upto 21</p>
+<p><code>sudo yum-builddep libreoffice</code></p>
+<p>On Fedora 22 upwards :</p>
+<p><code>sudo dnf builddep libreoffice</code></p>
+<h2 id="getting-the-lo-source-code">Getting the LO source code</h2>
+<p>The following gets the LO source code from git repo. This will take some time depending on your bandwidth.</p>
+<p><code>git clone git://anongit.freedesktop.org/libreoffice/core libreoffice</code></p>
+<h2 id="build-from-source-code">Build from source code</h2>
+<p>Go to the root of the downloaded git repository.</p>
+<pre><code>./autogen.sh --with-parallelism=5 --without-junit --enable-debug  --without-java  --without-doxygen --without-help --without-myspell-dicts
+make
+</code></pre><p>You can tweak the --with-parallelism param value to the number of cores you want to use for compilation.
+--enable-debug adds debugging symbols for debugging later.</p>
+<p>On our reference machine, make takes 1.75 hrs to finish.</p>
+<h2 id="running-libreoffice">Running Libreoffice</h2>
+<p>To run the LibreOffice you have just built, do
+<code>$ instdir/program/soffice --calc</code></p>
+<h2 id="advanced-setup">Advanced setup</h2>
+<p>Please refer <a href="https://wiki.documentfoundation.org/Development/BuildingOnLinux" target="_blank">https://wiki.documentfoundation.org/Development/BuildingOnLinux</a></p>
+<h2 id="debugging">Debugging</h2>
+<p>The easiest way to start LO in gdb is to run :
+<code>make debugrun</code></p>
+<p>Refer <a href="https://wiki.documentfoundation.org/Development/How_to_debug" target="_blank">https://wiki.documentfoundation.org/Development/How_to_debug</a> for a primer on using gdb</p>
 
                     
                     </section>
@@ -363,10 +398,10 @@
         </div>
 
         
-        <a href="../calcarch/core.html" class="navigation navigation-prev " aria-label="Previous page: core"><i class="fa fa-angle-left"></i></a>
+        <a href="../misc/index.html" class="navigation navigation-prev " aria-label="Previous page: Libreoffice misc"><i class="fa fa-angle-left"></i></a>
         
         
-        <a href="../calcarch/filter.html" class="navigation navigation-next " aria-label="Next page: filter"><i class="fa fa-angle-right"></i></a>
+        <a href="../misc/bibisect.html" class="navigation navigation-next " aria-label="Next page: bibisect"><i class="fa fa-angle-right"></i></a>
         
     </div>
 </div>
