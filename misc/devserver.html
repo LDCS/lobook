@@ -5,7 +5,7 @@
         
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=11; IE=10; IE=9; IE=8; IE=7; IE=EDGE" />
-        <title>mdds | Libreoffice Blog</title>
+        <title>devserver | Libreoffice Blog</title>
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <meta name="description" content="">
         <meta name="generator" content="GitBook 2.0.2">
@@ -20,8 +20,10 @@
         
     
     
+    <link rel="next" href="../misc/bibisect.html" />
     
-    <link rel="prev" href="../misc/bibisect.html" />
+    
+    <link rel="prev" href="../misc/devsetup.html" />
     
 
         
@@ -34,7 +36,7 @@
     
 
         
-    <div class="book" data-level="3.4" data-basepath=".." data-revision="Fri Oct 16 2015 18:38:00 GMT+0530 (IST)">
+    <div class="book" data-level="3.2" data-basepath=".." data-revision="Fri Oct 16 2015 18:38:00 GMT+0530 (IST)">
     
 
 <div class="book-summary">
@@ -212,7 +214,7 @@
             
         </li>
     
-        <li class="chapter " data-level="3.2" data-path="misc/devserver.html">
+        <li class="chapter active" data-level="3.2" data-path="misc/devserver.html">
             
                 
                     <a href="../misc/devserver.html">
@@ -242,7 +244,7 @@
             
         </li>
     
-        <li class="chapter active" data-level="3.4" data-path="misc/mdds.html">
+        <li class="chapter " data-level="3.4" data-path="misc/mdds.html">
             
                 
                     <a href="../misc/mdds.html">
@@ -365,54 +367,154 @@
                 
                     <section class="normal" id="section-">
                     
-                        <h1 id="mdds">MDDS</h1>
-<p>MDDS stands for Multi Dimensional Data Structure. It is basically a collection of data structures used to efficiently store as well as query multi-dimensional data for various filtering criteria. It contains the following data structures.</p>
+                        <h1 id="how-to-setup-a-libreoffice-development-server-online-for-public-access">How to setup a LibreOffice development server online for public access</h1>
+<p>LibreOffice development server is indented to mainly help the Linux newbies to quickly contribute to LibreOffice.</p>
+<h2 id="hardware">Hardware</h2>
 <ul>
-<li><p>Segment tree:  a balanced binary tree based data structure. The main feature of this data structure is that it can efficiently detect all intervals (that may overlap) that contain a given point.</p>
+<li>Processor - Intel i7 4790 3.6 GHz</li>
+<li>Motherboard - ASUS Z97-K</li>
+<li>Hard disk - Seagate 1TB SATA</li>
+<li>RAM - Kingston 8GB x 2</li>
+</ul>
+<h2 id="internet-connection">Internet connection</h2>
+<p>4Mbps Airtel home connection - goes to 512 Kbps after 120 GB usage.</p>
+<h2 id="setting-up-the-server">Setting up the server</h2>
+<ul>
+<li>Install Fedora 22 MATE Compiz Remix<ul>
+<li>50GB / partition</li>
+<li>500MB /boot partition</li>
+<li>Rest for /home partition</li>
+</ul>
 </li>
-<li><p>Flat segment tree: a variant of segment tree that handles non-overlapping intervals. This data structure is useful to store values associated with 1-D intervals that never overlap with each other. To know about the features as well as advantages of flat segment tree see <a href="http://kohei.us/2010/02/20/increasing-calcs-row-limit-to-1-million/" target="_blank">this</a></p>
+<li><p>Install x2go(remote desktop app) server</p>
+<p><code># dnf install x2goserver x2goserver-xsession</code></p>
 </li>
-<li><p>Rectangle set: can store 2-D rectangles. It can be used to efficiently query all rectangles that contain a given point.</p>
+<li><p>Install iptables</p>
+<p><code># dnf install iptables iptables-services</code></p>
 </li>
-<li><p>Point quad tree: stores 2-dimensional points and provides an efficient way to query all points within specified rectangular region.</p>
+<li><p>Install sshd</p>
+<p><code># dnf install sshd</code>
+ Change sshd listener port to something else in /etc/ssh/sshd_config</p>
 </li>
-<li><p>Mixed type matrix: Stores elements of four types: numeric, string, boolean, and empty. IT can also store flags associated with each element.</p>
+<li><p>Install emacs/vim</p>
 </li>
-<li><p>Multi type vector: Can store different unspecified types in a single logical array. Here contiguous elements of identical type are stored in contiguous intervals of memory.</p>
+<li><p>Set services to start on boot</p>
+<pre><code># systemctl enable sshd
+# systemctl start sshd
+# systemctl disable firewalld
+# systemctl enable iptables
+# systemctl enable x2gocleansessions.service
+</code></pre></li>
+<li><p>Set hostname</p>
 </li>
-<li><p>Multi type matrix: Can store four different types of elements: numeric, string, boolean, and empty.</p>
+<li><p>Setup iptables rules
+If root, allow all traffic
+If non-root allow only :</p>
+<pre><code>google-dns
+libreoffice.org
+gerrit.libreoffice.org
+bugs.documentfoundation.org
+dev-www.libreoffice.org
+</code></pre></li>
+<li><p>Install sendmail
+and set it up to send mails through gmail smtp using the instructions in the link <a href="http://linuxconfig.org/configuring-gmail-as-sendmail-email-relay" target="_blank">http://linuxconfig.org/configuring-gmail-as-sendmail-email-relay</a></p>
+</li>
+<li><p>Configure port forwarding in modem to forward sshd port to server
+In our case it is under &quot;Advanced Setup -&gt; NAT -&gt; Virtual Server&quot;</p>
+</li>
+<li><p>Setup IP address change notifier
+Cron a script to email the users whenever external ip adress of the box changes
+for getting ip we used : bot.whatismyipaddress.com</p>
 </li>
 </ul>
-<p>To know more on mdds try <a href="http://kohei.us/tag/mdds/" target="_blank">http://kohei.us/tag/mdds/</a></p>
-<p>Let us look at the example of a <strong>flat segment tree</strong>.</p>
-<p>It is a templated class having public members like key and value, a structure for non leaf value, a structure for leaf value, some handlers for the template class, iterators, functions for inserting a new segment into the tree, functions for removing a segment from the tree, funtions for shifting the segments left or right, function to perform leaf node search for a value based on a key. The following code was taken from the example code provided along with the mdds source code.</p>
-<pre><code>typedef ::mdds::flat_segment_tree&lt;long, int&gt; fst_type;
+<h2 id="setting-up-the-lo-dev-env-in-the-server">Setting up the LO dev env in the server</h2>
+<ul>
+<li><p>Install build dependencies
+<code># sudo dnf builddep libreoffice</code></p>
+</li>
+<li><p>Create a folder /home/lo/ as root to host local copy of LibreOffice git code repository.
+and get the source code using :
+<code># git clone git://anongit.freedesktop.org/libreoffice/core libreoffice</code></p>
+</li>
+<li><p>Setup a cron entry to do &quot;git pull&quot; every 1 hour in the folder /home/lo/libreoffice</p>
+</li>
+</ul>
+<h2 id="what-a-new-user-need-to-do-start-developing">What a new user need to do start developing ?</h2>
+<ul>
+<li>Request account by sending a mail to <strong>lodevserver@ldcs.co.in</strong>, and we will give you the credentials to login.</li>
+<li>Install x2goclient in your operating system. For Fedora 22+ systems just do <code># dnf install x2goclient</code>.</li>
+<li>Login with the provided credentials. Select &quot;Session type&quot; as &quot;MATE&quot; in the x2goclient settings dialog box.</li>
+<li>Open a terminal in our machine after you login.</li>
+<li><p>Setup git identity in our machine, as per the following example :</p>
+<pre><code>$ git config --global user.name &quot;John Doe&quot;
+$ git config --global user.email johndoe@example.com
+</code></pre></li>
+<li><p>Clone LibreOffice source code repo.
+<code>$ git clone /home/lo/libreoffice libreoffice</code></p>
+</li>
+<li><p>Go to libreoffice repo root
+<code>$ cd libreoffice</code></p>
+</li>
+<li><p>Build LibreOffice using the following 2 commands ( Second step will take about 1.5 hours when run for the first time )</p>
+<pre><code>$ ./autogen.sh --with-parallelism=3 --without-junit --enable-debug --without-java --without-doxygen --without-help --without-myspell-dicts
 
-int main() 
-{ 
-    // Define the begin and end points of the whole segment, and the default value. 
-    fst_type db(0, 500, 0); 
+$ make
+</code></pre></li>
+<li><p>To run LibreOffice which you just now built :
+<code>$ instdir/program/soffice</code></p>
+</li>
+<li><p>To start LibreOffice in gdb
+<code>$ make debugrun</code></p>
+</li>
+</ul>
+<h2 id="how-to-start-contributing">How to start contributing ?</h2>
+<ul>
+<li><p>Create a new branch for making your code change :
+<code>$ git checkout -b branch_name</code>
+where branch_name can be any string without spaces.</p>
+</li>
+<li><p>Select what to work on. If you are new to LibreOffice development, then try an &quot;Easy Hack&quot;.</p>
+<ul>
+<li>Easy hacks are bugs/feature additions in LibreOffice which are comparatively easy to do for a newbie to LibreOffice development.</li>
+<li>Go to <a href="https://wiki.documentfoundation.org/Development/Easy_Hacks/lists/by_Difficulty" target="_blank">https://wiki.documentfoundation.org/Development/Easy_Hacks/lists/by_Difficulty</a> for list of easy hacks sorted by difficulty.</li>
+<li>After deciding on a bug that you want to solve, create a Bugzilla account at <a href="https://bugs.documentfoundation.org/createaccount.cgi" target="_blank">https://bugs.documentfoundation.org/createaccount.cgi</a> and go the bug&apos;s page you are interested and do the following :<ul>
+<li>Click &apos;edit&apos; next to &#x201C;Assigned to&#x201D;, and enter your mail address</li>
+<li>Set bug status to ASSIGNED</li>
+<li>Add a comment that you&apos;re starting work on this bug</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Now you know what to do, so use your favorite editor - emacs/vim and make the code change.</li>
+<li><p>Now rebuild LibreOffice using :</p>
+<p><code>$ make</code>
+( Do this step always after you change code before you run LibreOffice. The time taken to complete this step depends on what you changed. )</p>
+</li>
+<li>Now test whether your code change worked by running LibreOffice :</li>
+</ul>
+<p><code>$ instdir/program/soffice</code></p>
+<ul>
+<li><p>If you find issues, and want to debug it, run :</p>
+<p><code>$ make debugrun</code></p>
+</li>
+<li><p>If you are confident that your code change worked, then commit your code :</p>
+<p><code>$ git commit -m &#x201C;short_description_of_what_the_code_change_is_about&#x201D; file1 file2 file3 ....</code>
+(Where file1 file2 file3 ...etc are the files you modified.)</p>
+</li>
+<li>Now contact us at <strong>team@ldcs.co.in</strong> and and let us know what you have been working on, then we will instruct you on how to send your patch to LibreOffice developers.</li>
+</ul>
+<h2 id="source-code-navigation-tool-opengrok">Source code navigation tool - Opengrok</h2>
+<ul>
+<li>Opengrok is web based source code search and cross reference engine. It helps you search, cross-reference and navigate the source code.</li>
+<li>Access it at <a href="http://opengrok.libreoffice.org" target="_blank">http://opengrok.libreoffice.org</a></li>
+</ul>
+<h2 id="how-to-get-help-when-you-are-stuck">How to get help when you are stuck ?</h2>
+<ul>
+<li>Contact us at <strong>team@ldcs.co.in</strong></li>
+<li>Go to <a href="http://webchat.freenode.net/?channels=libreoffice-dev" target="_blank">http://webchat.freenode.net/?channels=libreoffice-dev</a> to chat with LibreOffice developers.</li>
+<li>Post your queries in LibreOffice mailing list : For using this you need to register at <a href="http://lists.freedesktop.org/mailman/listinfo/libreoffice" target="_blank">http://lists.freedesktop.org/mailman/listinfo/libreoffice</a></li>
+</ul>
 
-    db.insert_front(10, 20, 10); 
-    db.insert_back(50, 70, 15); 
-    db.insert_back(60, 65, 5); 
-
-    int value = -1; 
-    long beg = -1, end = -1; 
-
-    // Perform linear search.  This doesn&apos;t require the tree to be built beforehand.  Note that the begin and end point parameters are optional. 
-    db.search(15, value, &amp;beg, &amp;end); 
-    cout &lt;&lt; &quot;The value at 15 is &quot; &lt;&lt; value &lt;&lt; &quot;, and this segment spans from &quot; &lt;&lt; beg &lt;&lt; &quot; to &quot; &lt;&lt; end &lt;&lt; endl;; 
-
-    //build the tree first
-    db.build_tree(); 
-
-    // Perform tree search.  Tree search is generally a lot faster than linear 
-    // search, but requires the tree to be built beforehand. 
-    db.search_tree(62, value, &amp;beg, &amp;end); 
-    cout &lt;&lt; &quot;The value at 62 is &quot; &lt;&lt; value &lt;&lt; &quot;, and this segment spans from &quot; &lt;&lt; beg &lt;&lt; &quot; to &quot; &lt;&lt; end &lt;&lt; endl;; 
-}
-</code></pre>
                     
                     </section>
                 
@@ -422,8 +524,10 @@ int main()
         </div>
 
         
-        <a href="../misc/bibisect.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page: bibisect"><i class="fa fa-angle-left"></i></a>
+        <a href="../misc/devsetup.html" class="navigation navigation-prev " aria-label="Previous page: devsetup"><i class="fa fa-angle-left"></i></a>
         
+        
+        <a href="../misc/bibisect.html" class="navigation navigation-next " aria-label="Next page: bibisect"><i class="fa fa-angle-right"></i></a>
         
     </div>
 </div>
