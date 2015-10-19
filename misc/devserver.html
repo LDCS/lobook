@@ -36,7 +36,7 @@
     
 
         
-    <div class="book" data-level="3.2" data-basepath=".." data-revision="Fri Oct 16 2015 18:38:00 GMT+0530 (IST)">
+    <div class="book" data-level="3.2" data-basepath=".." data-revision="Mon Oct 19 2015 19:57:38 GMT+0530 (IST)">
     
 
 <div class="book-summary">
@@ -489,8 +489,11 @@ where branch_name can be any string without spaces.</p>
 <li><p>Now rebuild LibreOffice using :</p>
 <p><code>$ make</code>
 ( Do this step always after you change code before you run LibreOffice. The time taken to complete this step depends on what you changed. )</p>
+<p>To skip unit tests, use <code>$ make build-nocheck</code></p>
+<p>To build just calc, use <code>$ make sc</code></p>
 </li>
-<li>Now test whether your code change worked by running LibreOffice :</li>
+<li><p>Now test whether your code change worked by running LibreOffice :</p>
+</li>
 </ul>
 <p><code>$ instdir/program/soffice</code></p>
 <ul>
