@@ -5,7 +5,7 @@
         
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=11; IE=10; IE=9; IE=8; IE=7; IE=EDGE" />
-        <title>Libreoffice misc | Libreoffice Blog</title>
+        <title>patchchecklist | Libreoffice Blog</title>
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <meta name="description" content="">
         <meta name="generator" content="GitBook 2.0.2">
@@ -20,10 +20,8 @@
         
     
     
-    <link rel="next" href="../misc/devsetup.html" />
     
-    
-    <link rel="prev" href="../calcarch/filter.html" />
+    <link rel="prev" href="../misc/namespaces.html" />
     
 
         
@@ -36,7 +34,7 @@
     
 
         
-    <div class="book" data-level="3" data-basepath=".." data-revision="Fri Jan 22 2016 07:21:35 GMT+0530 (IST)">
+    <div class="book" data-level="3.6" data-basepath=".." data-revision="Fri Jan 22 2016 07:21:35 GMT+0530 (IST)">
     
 
 <div class="book-summary">
@@ -183,7 +181,7 @@
             
         </li>
     
-        <li class="chapter active" data-level="3" data-path="misc/index.html">
+        <li class="chapter " data-level="3" data-path="misc/index.html">
             
                 
                     <a href="../misc/index.html">
@@ -274,7 +272,7 @@
             
         </li>
     
-        <li class="chapter " data-level="3.6" data-path="misc/patchchecklist.html">
+        <li class="chapter active" data-level="3.6" data-path="misc/patchchecklist.html">
             
                 
                     <a href="../misc/patchchecklist.html">
@@ -397,7 +395,37 @@
                 
                     <section class="normal" id="section-">
                     
-                        <h1 id="miscellaneous-topics-related-to-calc">Miscellaneous topics related to Calc</h1>
+                        <h1 id="checklist-before-submitting-the-patch">Checklist before submitting the patch</h1>
+<ol>
+<li><p>Check for indentation issues, always use four <em>space</em> indentation.</p>
+</li>
+<li><p>Do not extra indent the block curly braces.</p>
+</li>
+<li><p>Do not use C style casting like (ScColumn *)(pCol), use either static_cast or dynamic_cast as appropriate.</p>
+</li>
+<li><p>Do not use low level C/C++ char functions like isalpha() or isdigit() on chars from OUString as they are not
+unicode aware. See CharClass::isAlphaNumeric(), OUString class and others from docs.libreoffice.org</p>
+</li>
+<li><p>Make sure the variables are declared only in the smallest possible scope.</p>
+</li>
+<li><p>Always put a space between keywords like for, while, if, return, switch and the following parathesis. For example <code>for ( i = 0; i &lt; 10; i++ )</code> rather than
+<code>for( i=0; i &lt; 10; i++ )</code>.</p>
+</li>
+<li><p>Do not remove blank lines in the source code for a patch that is doing something else. Remember if your patch does X then it should only do X.
+However within the new code you add, you can add blank lines as appropriate.</p>
+</li>
+<li><p>Your patch on local machine sits in a dedicated git branch.</p>
+</li>
+<li><p>Make sure your dedicated branch has only one commit from you. If you want to modify the always use <code>git commit --amend &lt;file1&gt; &lt;file2&gt; ...</code> rather than
+creating a new commit.</p>
+</li>
+<li><p>Always review the patch before you submit to gerrit by doing &quot;git show&quot; after you commit everything.</p>
+</li>
+<li><p>Ensure that commit message contains the corresponding tdf bug id like <code>tdf#23452</code></p>
+</li>
+<li><p>Do not change the Change-Id line in the commit message while doing git --amend</p>
+</li>
+</ol>
 
                     
                     </section>
@@ -408,10 +436,8 @@
         </div>
 
         
-        <a href="../calcarch/filter.html" class="navigation navigation-prev " aria-label="Previous page: filter"><i class="fa fa-angle-left"></i></a>
+        <a href="../misc/namespaces.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page: namespaces"><i class="fa fa-angle-left"></i></a>
         
-        
-        <a href="../misc/devsetup.html" class="navigation navigation-next " aria-label="Next page: devsetup"><i class="fa fa-angle-right"></i></a>
         
     </div>
 </div>
